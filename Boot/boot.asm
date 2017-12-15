@@ -2,6 +2,7 @@
 org 0x7c00
 
 call hello
+call dispinfo
 htl
 
 hello:
@@ -13,7 +14,9 @@ hello:
 	mov cx, 0xb     ;字符长度
 	mov dx, 0x0202  ;行 列
 	int 10h         ;调用biso的函数
+	ret
 
+dispinfo:
 	mov ax, info
 	mov bp, ax
 	mov ah, 13h     ;写字符串
@@ -23,6 +26,7 @@ hello:
 	mov dx, 0x0302  ;行 列
 	int 10h         ;调用biso的函数
 	ret
+	
 message:
 	db "Hello World!"
 info:
